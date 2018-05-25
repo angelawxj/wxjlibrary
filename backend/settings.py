@@ -39,12 +39,14 @@ INSTALLED_APPS = [
 	
 	'rest_framework',
 	'corsheaders',
+	'whitenoise.runserver_nostatic',
 	
 	'users',
 	'bookList',
 ]
 
 MIDDLEWARE = [
+	'whitenoise.middleware.WhiteNoiseMiddleware',# new
 	'corsheaders.middleware.CorsMiddleware', # new
     'django.middleware.common.CommonMiddleware', # new
     'django.middleware.security.SecurityMiddleware',
@@ -55,6 +57,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+
 
 # CORS_ORIGIN_WHITELIST = (
     # 'http://127.0.0.1:8020/'
@@ -130,6 +134,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') # new!
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')] 
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage' \ # new!
 
 
 AUTH_USER_MODEL = 'users.CustomUser'
+
