@@ -1,0 +1,88 @@
+1.在桌面创建一个文件夹todo
+2.在todo里面再创建一个文件夹backend
+3.在backend里面安装django       ---    pipenv install django
+4.运行环境                      ---    pipenv shell
+5.在backend 中创建一个项目todo_api ---  django-admin startproject todo_api .
+6.在backend 中创建一个应用 todos   ---	python manage.py startapp todos
+7.在backend 中创建数据库           ---  python manage.py migrate
+
+8.在项目级的settings.py中，Installed_apps中添加 'todos'
+9.在应用级todos的models中写简单的模型代码
+10.已经更新了模型，接着制作迁移文件  ---  python manage.py makemigrations todos
+11.使用迁移文件，迁移数据库          ---  python manage.py migrate todos
+12.使用django内置的管理应用程序与我们的数据进行交互，在todos/amdim.py 中引入模型，并注册模型
+13.创建一个superuser账户            ---  python manage.py createsuperuser
+14.启动本地服务器，导航到http://127.0.0.1:8000/admin/    ---  python manage.py runserver
+15.在内置管理应用程序中点击todos创建3个新的待办事项
+17.进行测试 todos/tests.py 中添加测试代码
+18.确保我们的测试正在运行，退出本地服务器Control+c并运行python manage.py test
+
+19.在backend中安装Django Rest Framework      ---  pipenv install djangorestframework
+20.在项目级的settings.py中，Installed_apps中添加 'rest_framework'，和REST_FRAMEWORK 变量
+21.在项目级的urls.py中,增加todos的路径 --- path('api/', include('todos.urls'))，并导入include
+22.创建应用程序级的urls文件，并添加代码
+23.制作我们的第一个序列化程序，在todos中创建serializers.py文件，写入代码
+24.在todos/views.py中写入通用视图代码
+
+25.我们的API已经准备好使用了，可以浏览的API,运行，打开 http://127.0.0.1:8000/api/
+
+26.最后一步，跨源资源共享（CORS）,使用中间件在backend中  --- pipenv install django-cors-headers
+27.然后在项目级settings.py的三个地方更新我们的文件，1.Installed_apps中添加corsheaders  2.MIDDLEWARE添加中间件 3.CORS_ORIGIN_WHITELIST白名单，vue,默认的本地端口地址
+
+28.好了，接下来就是创建一个vue项目，在此查看创建vue项目的详细教程https://www.jianshu.com/p/1626b8643676
+
+
+
+
+自定义用户模型 
+
+
+
+请参照 https://wsvincent.com/django-custom-user-model-tutorial/
+
+1.更新 settings
+	1.添加users 应用程序  
+	2.使用AUTH_USER_MODEL配置来告诉Django使用我们的新的自定义用户模型来代替内置User模型。
+	我们将调用我们的自定义用户模型CustomUser
+	在整个文件的底部添加AUTH_USER_MODEL配置。
+	AUTH_USER_MODEL = 'users.CustomUser'
+2.更新 users/models
+3.创建新文件 users/forms.py ,写入代码，对现有表单进行子类化
+4.更新 users/admin 
+5.(users) $ python manage.py makemigrations users  
+  (users) $ python manage.py migrate	
+6.创建超级用户 python manage.py createsuperuser 并允许 python manage.py rusnerver
+
+
+
+创建RESTful API 
+
+代码参考 https://wsvincent.com/django-rest-framework-tutorial/
+https://wsvincent.com/django-rest-framework-react-tutorial/
+
+1.安装Django Rest Framework   --- pipenv install djangorestframework
+2.在项目级的settings.py中，Installed_apps中添加 'rest_framework'
+3.序列化模型  在应用中创建 serializers.py文件并写入代码
+4.更新应用中的view.py 使用Viewsets
+5.更新应用中的urls.py 写入代码
+6.最后一步处理，跨源资源共享（CORS）
+  安装中间件：pipenv install django-cors-headers
+7.在settings中三个地方更新文件：
+  1.添加corsheaders到INSTALLED_APPS
+  2.在MIDDLEWARE中添加2个中间件
+  3.创建一个 CORS_ORIGIN_WHITELIST 
+    CORS_ORIGIN_WHITELIST = (
+    	'localhost:3000/'
+    )
+
+
+
+heroku 部署
+
+1.在heroku上注册
+2.下载安装keroku
+3.heroku login 登录 密码：Wxj7153617266@
+4.git clone https://github.com/angelawxj/wxjlibrary.git
+5.cd wxjlibrary
+6.heroku create 在Heroku上创建一个应用程序
+7.git push heroku master 部署代码
