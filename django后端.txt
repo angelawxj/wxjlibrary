@@ -97,3 +97,11 @@ git连接 github
 4.第一次推送加 -u,  git push -u origin master
 
   
+heroku 部署结束，更新代码
+
+1.项目下heroku login 
+2.连接heroku git:remote -a cryptic-oasis-40349
+3.heroku config:set DISABLE_COLLECTSTATIC=1
+4.更新代码git push heroku master
+5.打开heroku ps:scale web=1
+6.heroku open
