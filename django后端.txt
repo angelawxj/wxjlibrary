@@ -121,4 +121,8 @@ heroku 部署结束，更新代码
   运行成Excel文件 scrapy crawl amazon -o data.csv  
   运行成json文件，scrapy crawl amazon -o amazon.json
  
-mysql 使用教程
+mysql 创建数据库命令
+1.打开mysql commmand line client
+2.创建数据库 CREATE DATABASE amazon;
+3.显示当前已经有的数据库：show databases;
+
