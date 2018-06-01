@@ -100,8 +100,25 @@ git连接 github
 heroku 部署结束，更新代码
 
 1.项目下heroku login 
-2.连接heroku git:remote -a cryptic-oasis-40349
+2.连接heroku git:remote -a obscure-badlands-74461
 3.heroku config:set DISABLE_COLLECTSTATIC=1
 4.更新代码git push heroku master
 5.打开heroku ps:scale web=1
 6.heroku open
+
+
+安装scrapy  -- https://www.lfd.uci.edu/~gohlke/pythonlibs/#twisted
+1.pip install wheel
+2.pip install  Twisted-18.4.0-cp36-cp36m-win_amd64.whl
+3.pip install Scrapy
+4.pip install pyopenssl
+5.pip install pypiwin32
+
+创建一个爬虫项目
+1.scrapy startproject spider
+2.创建一个新的spider：scrapy genspider mydomain mydomain.com，并写入代码
+3.运行爬虫		  scrapy crawl quotes
+  运行成Excel文件 scrapy crawl amazon -o data.csv  
+  运行成json文件，scrapy crawl amazon -o amazon.json
+ 
+mysql 使用教程
