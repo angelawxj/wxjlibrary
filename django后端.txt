@@ -113,6 +113,7 @@ heroku 部署结束，更新代码
 3.pip install Scrapy
 4.pip install pyopenssl
 5.pip install pypiwin32
+6.pip install pymysql
 
 创建一个爬虫项目
 1.scrapy startproject spider
@@ -125,4 +126,11 @@ mysql 创建数据库命令
 1.打开mysql commmand line client
 2.创建数据库 CREATE DATABASE amazon;
 3.显示当前已经有的数据库：show databases;
+4.使用某个数据库 use amazon;
+
+创建表
+1.use amazon
+2.create table book(name VARCHAR(100) NOT NULL);
+CREATE TABLE book(name varchar(555),author varchar(555))
+3.查看表数据 select * from book;
 
