@@ -1,12 +1,14 @@
 from django.db import models
 
 class Post(models.Model):
-    title = models.CharField(max_length=50)
-    content = models.TextField()
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-    images_url = models.CharField(max_length=200, default='DEFAULT VALUE')
-    author = models.CharField(max_length=50, default='wxj')
+    name = models.CharField(max_length=550, null=False, default="1")
+    author = models.CharField(max_length=550, null=False, default="2")
+    img_url = models.CharField(max_length=550, null=False, default="3")
+
 	
     def __str__(self):
-        return self.title
+        """A string representation of the model."""
+        return self.name
+    #修改表名字
+    class Meta():
+        db_table = 'books'

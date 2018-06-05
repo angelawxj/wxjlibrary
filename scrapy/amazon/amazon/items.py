@@ -14,4 +14,4 @@ class AmazonItem(scrapy.Item):
      # #作者
      author = scrapy.Field()
      # #封面
-     # cover = scrapy.Field()
+     img_url = scrapy.Field()

@@ -49,10 +49,12 @@ class MysqlPipeline(object):
 
     #插入数据
     def insert_db(self, item):
+        print("哈哈哈",item)
         values = (
             item['name'],
-            item['author']
+            item['author'],
+            item['img_url'],
         )
 
-        sql = 'INSERT INTO book VALUES("%s","%s")'
+        sql = 'INSERT INTO books(name,author,img_url) VALUES(%s,%s,%s)'
         self.db_cur.execute(sql, values)

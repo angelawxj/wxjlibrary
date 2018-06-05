@@ -131,6 +131,22 @@ mysql 创建数据库命令
 创建表
 1.use amazon
 2.create table book(name VARCHAR(100) NOT NULL);
-CREATE TABLE book(name varchar(555),author varchar(555))
-3.查看表数据 select * from book;
+3.创建自动增长的ID;CREATE TABLE book(id int(5) NOT NULL auto_increment,name varchar(555),author varchar(555),img_url varchar(555),primary key (id) )
+4.查看表数据 select * from book;
+5.删除表命令 drop table book;
 
+django api 使用mysql
+1.在setting.by中
+   DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',   # 数据库引擎
+        'NAME': 'amazon',  # 数据库名，先前创建的
+        'USER': 'root',     # 用户名，可以自己创建用户
+        'PASSWORD': 'dong1990',  # 密码
+        'HOST': '127.0.0.1',  # mysql服务所在的主机ip
+        'PORT': '3306',         # mysql服务端口
+    }
+  }
+2.pip install mysqlclient
+3. python manage.py makemigrations bookList
+4.  python manage.py migrate bookList

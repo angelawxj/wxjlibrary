@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 import scrapy
-from amazon.items import AmazonItem 
 
 
 class AmazonspiderSpider(scrapy.Spider):
@@ -10,11 +9,12 @@ class AmazonspiderSpider(scrapy.Spider):
     ]
 
     def parse(self, response):
-        item = AmazonItem()
-        for amazon in response.xpath('//div[@class="a-container"]'):
-            item['name'] = amazon.xpath('.//li/a/text()').extract()
-            item['author'] = amazon.xpath('.//li/a/text()').extract()
-            yield item
+        for amazon in response.xpath('//li[@class="zg-item-immersion"]'):
+           yield {
+                'name': amazon.xpath('.//img/@alt').extract(),
+                'author': amazon.xpath('.//span[@class="a-size-small a-color-base"]/text()').extract_first(),
+                'img_url': amazon.xpath('.//img/@src').extract(),
+            }
             
 
 
